@@ -1,8 +1,12 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.contrib import admin
-from chat.views import hello
+from chat.views import home
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^hello/', hello),
+    path('admin/', admin.site.urls),
+    path('chat/', include('chat.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]

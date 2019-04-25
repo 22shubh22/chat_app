@@ -1,0 +1,11 @@
+{% if latest_message_list %}
+    <ul>
+    {% for message in latest_message_list %}
+        <p>{{ message.message_text }}</p>
+        <p>{{ message.pub_date }}</p>
+        <hr>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No message are available.</p>
+{% endif %}
